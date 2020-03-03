@@ -3,11 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>První serveřík</title>
+
+    <script>
+        function ukazCitac() {
+            let url = `http://localhost:8080/citac`;
+            fetch(url).then(function(response) {
+                response.text().then(function(text) {
+                    let obj = JSON.parse(text);
+                    document.getElementById("vystupCitac").innerHTML = "<b>" + obj.citac + "</b> (" + obj.popis + ")";
+                });
+            });
+        }
+    </script>
+
 </head>
-<body>
+<body onload="ukazCitac()">
 
 <h1>První serveřík</h1>
 test testík testíček
+<br><br>
+
+<div id="vystupCitac">...</div>
 
 </body>
-</html>undefinedundefined
+</html>
